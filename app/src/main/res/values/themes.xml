@@ -10,4 +10,6 @@
     </style>
 
     <style name="Theme.HackathonY" parent="Base.Theme.HackathonY" />
+
+    <style name="TextStyleSemiBold15" />
 </resources>

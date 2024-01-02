@@ -9,6 +9,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kr.ac.duksung.hackathon_y.ui.MeetingFragment
+import kr.ac.duksung.hackathon_y.ui.schedule.ScheduleFragment
 import java.security.MessageDigest
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.tapAlram -> {
                 }
                 R.id.tapSchedule -> {
+	                replaceFragment(ScheduleFragment())
                 }
 
             }
