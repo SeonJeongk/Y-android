@@ -8,6 +8,7 @@
     tools:context=".ui.Project.AddProjectFragment">
 
     <ImageView
+
         android:id="@+id/imageView3"
         android:layout_width="300dp"
         android:layout_height="250dp"
@@ -35,10 +36,11 @@
         app:layout_constraintStart_toStartOf="@+id/textview"
         app:layout_constraintTop_toBottomOf="@+id/textview">
 
-        <TextView
+        <EditText
+            android:background="@color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="엄격한 관리자 프로젝트⚡"
+            android:hint="엄격한 관리자 프로젝트⚡"
             android:layout_margin="10dp"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -61,10 +63,50 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="10dp"
         android:id="@+id/addmem_rec"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/project_btn03"
+        app:layout_constraintBottom_toBottomOf="@+id/addmem_rec"
+        app:layout_constraintStart_toEndOf="@+id/addmem_rec"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Type"
+        android:textColor="#848A94"
+        app:layout_constraintStart_toStartOf="@+id/addmem_rec"
+        app:layout_constraintTop_toBottomOf="@+id/addmem_rec" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="45dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/project_btn"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <ImageButton
+
+        android:layout_marginLeft="40dp"
+        android:layout_width="240dp"
+        android:layout_height="65dp"
+        android:background="@drawable/project_btn02"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

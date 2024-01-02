@@ -1,0 +1,5 @@
+<!-- res/drawable/edittext_rounded_bg.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/> <!-- 배경색 지정 -->
+    <corners android:radius="20dp"/> <!-- radius 지정 -->
+</shape>
