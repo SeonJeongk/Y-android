@@ -2,14 +2,18 @@ package kr.ac.duksung.hackathon_y.ui.schedule.adapter
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.icu.util.Calendar
-import android.util.Log
+import android.graphics.Color
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.DayViewDecorator
+import com.prolificinteractive.materialcalendarview.DayViewFacade
 import kr.ac.duksung.hackathon_y.databinding.ItemTimeBinding
 import kr.ac.duksung.hackathon_y.ui.schedule.Time
+import java.util.Calendar
 
 class TimeRVAdapter(private val context: Context, private val sharedPreferences: SharedPreferences) : RecyclerView.Adapter<TimeRVAdapter.TimeHolder>() {
 	var time: MutableList<Time> = mutableListOf()
@@ -27,6 +31,7 @@ class TimeRVAdapter(private val context: Context, private val sharedPreferences:
 	}
 
 	override fun onBindViewHolder(holder: TimeHolder, position: Int) {
+
 		holder.itemBinding.tvTimeContent.text = formattedTime[position]
 
 		holder.itemBinding.btnDelete.setOnClickListener {
@@ -50,12 +55,13 @@ class TimeRVAdapter(private val context: Context, private val sharedPreferences:
 	private fun removeTime(position: Int) {
 		time.removeAt(position)
 		formattedTime.removeAt(position)
-		notifyDataSetChanged()
 
 		val editor = sharedPreferences.edit()
 		val key = getKeyForPosition(position)
 		editor.remove(key)
 		editor.apply()
+
+		notifyDataSetChanged()
 	}
 
 	private fun getKeyForPosition(position: Int): String {
@@ -97,5 +103,4 @@ class TimeRVAdapter(private val context: Context, private val sharedPreferences:
 		val formattedMin = String.format("%02d", time.min)
 		return "$formattedHour:$formattedMin"
 	}
-
 }

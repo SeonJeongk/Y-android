@@ -2,15 +2,22 @@ import kr.ac.duksung.hackathon_y.ui.schedule.Time
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.DayViewDecorator
+import com.prolificinteractive.materialcalendarview.DayViewFacade
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
+import com.prolificinteractive.materialcalendarview.format.DateFormatTitleFormatter
+import com.prolificinteractive.materialcalendarview.format.TitleFormatter
 import kr.ac.duksung.hackathon_y.databinding.FragmentScheduleBinding
 import kr.ac.duksung.hackathon_y.ui.schedule.adapter.TimeRVAdapter
 import java.util.Locale
@@ -71,6 +78,10 @@ class ScheduleFragment : Fragment() {
 	}
 
 	private fun initCalendarView() {
+		val decorators = mutableListOf<DayViewDecorator>(
+			SundayDecorator(),
+			SaturdayDecorator()
+		)
 		binding.calendarView.setOnDateChangedListener(OnDateSelectedListener { widget, date, selected ->
 
 			selectedDate = Calendar.getInstance().apply {
@@ -114,5 +125,32 @@ class ScheduleFragment : Fragment() {
 
 	private fun getKey(calendar: Calendar): String {
 		return SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
+	}
+
+	inner class SundayDecorator() : DayViewDecorator {
+		private val calendar = java.util.Calendar.getInstance()
+		override fun shouldDecorate(day: CalendarDay?): Boolean {
+			day?.copyTo(calendar)
+			val weekDay = calendar.get(java.util.Calendar.DAY_OF_WEEK)
+			return weekDay == java.util.Calendar.SUNDAY
+		}
+
+		override fun decorate(view: DayViewFacade?) {
+			view?.addSpan(ForegroundColorSpan(Color.RED))
+		}
+
+	}
+
+	inner class SaturdayDecorator() : DayViewDecorator {
+		private val calendar = java.util.Calendar.getInstance()
+		override fun shouldDecorate(day: CalendarDay?): Boolean {
+			day?.copyTo(calendar)
+			val weekDay = calendar.get(java.util.Calendar.DAY_OF_WEEK)
+			return weekDay == java.util.Calendar.SATURDAY
+		}
+
+		override fun decorate(view: DayViewFacade?) {
+			view?.addSpan(ForegroundColorSpan(Color.BLUE))
+		}
 	}
 }
