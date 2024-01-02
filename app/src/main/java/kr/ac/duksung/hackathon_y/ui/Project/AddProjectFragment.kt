@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kr.ac.duksung.hackathon_y.R
 import kr.ac.duksung.hackathon_y.databinding.FragmentAddProjectBinding
+import kr.ac.duksung.hackathon_y.ui.TeamManagement.TeamManagementFragment
 import kr.ac.duksung.hackathon_y.ui.TeamManagement.TeamRecAdapter
 
 
@@ -43,10 +44,23 @@ class AddProjectFragment : Fragment() {
         binding.addmemRec.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false)
 
 
+        binding.btn.setOnClickListener(){
+            val addProjectFragment = TeamManagementFragment()
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, addProjectFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
         viewModel.MemberDtos.observe(viewLifecycleOwner,{
                 memberList->
             memberAdapter.updateList(memberList)
         })
+
+
+        binding.addBtn.setOnClickListener(){
+            MyBottomSheetDialogFragment().show(parentFragmentManager, "myBottomSheet")
+        }
         return binding.root
 
 
