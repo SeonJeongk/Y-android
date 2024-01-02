@@ -15,4 +15,9 @@
     </style>
 
     <style name="TextStyleSemiBold15" />
+    <style name="InfoNumberPickerTheme">
+        <item name="android:textSize">17sp</item>
+        <item name="android:fontFamily">@font/pretendard_extrabold</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
 </resources>
