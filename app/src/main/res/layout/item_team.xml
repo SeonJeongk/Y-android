@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/team_background"
     android:layout_margin="5dp"
-    android:layout_height="wrap_content">
+    android:layout_height="90dp">
 
     <TextView
         android:fontFamily="@font/font_pretendard"

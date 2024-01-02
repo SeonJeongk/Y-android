@@ -37,7 +37,11 @@ class TeamManagementFragment : Fragment() {
                     progressAdapter.updateList(listOf(progressDto))
 
                     // teammember_rec에 데이터를 설정하는 로직 추가
-                    val teamMemberAdapter = TeamMemberRecAdapter(listOf(TeamMemberDto("에릭",33,33)))
+                    val teamMemberAdapter = TeamMemberRecAdapter(listOf(
+                        TeamMemberDto("에릭",33,33),
+                        TeamMemberDto("리나",3,33,R.drawable.profile_image02)
+
+                    ))
                     binding.teammemberRec.adapter = teamMemberAdapter
                 } else {
                     // 원래 상태로 돌아가야 하는 경우 코드를 추가합니다.
