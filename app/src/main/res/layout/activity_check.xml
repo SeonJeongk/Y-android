@@ -18,6 +18,7 @@
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/actionbar"
             tools:layout_editor_absoluteX="0dp">
@@ -27,7 +28,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="100dp"
                 android:background="@drawable/style_border_meeting_write"
                 android:fontFamily="@font/pretendard_regular"
                 android:text="할 일을 추가하세요."

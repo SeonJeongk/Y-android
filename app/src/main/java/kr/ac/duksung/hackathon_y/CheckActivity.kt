@@ -29,6 +29,9 @@ class CheckActivity : AppCompatActivity() {
 
         viewBinding.actionbar.ivSidemenu.visibility = View.INVISIBLE
         viewBinding.actionbar.ivSidemenu2.visibility = View.VISIBLE
+        viewBinding.actionbar.ivSidemenu2.setOnClickListener {
+            onBackPressed()
+        }
         container = findViewById(R.id.container)
         button = findViewById(R.id.btn)
 
