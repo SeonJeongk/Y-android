@@ -1,14 +1,20 @@
 package kr.ac.duksung.hackathon_y.ui.meeting
 
+//import CheckActivity
+//import CheckActivity
+import android.content.Intent
 import android.graphics.Typeface
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import kr.ac.duksung.hackathon_y.CheckActivity
+import kr.ac.duksung.hackathon_y.R
 import kr.ac.duksung.hackathon_y.data.entities.InnerItem
 import kr.ac.duksung.hackathon_y.databinding.ItemInnerBinding
 
@@ -29,29 +35,47 @@ class InnerAdapter(private val innerList: List<InnerItem>) : RecyclerView.Adapte
     }
 
     inner class InnerViewHolder(private val itemBinding: ItemInnerBinding) : RecyclerView.ViewHolder(itemBinding.root) {
-//        private val innerTextView: TextView = itemBinding.tvPart
         private val btnAdd: ImageButton = itemBinding.imgBtn
         private val container: LinearLayout = itemBinding.container
-        fun bind(innerItem: InnerItem) {
-            // 내부 아이템의 데이터를 가져와서 뷰에 설정
-//            innerTextView.text = innerItem.part
 
+        fun bind(innerItem: InnerItem) {
             btnAdd.setOnClickListener {
-                val text = TextView(itemView.context)
+                val linearLayout = LinearLayout(itemView.context)
+                linearLayout.orientation = LinearLayout.HORIZONTAL
+
                 val editText = EditText(itemView.context)
                 editText.hint = "# 파트 추가하기"
-
-                editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f) // 원하는 크기로 설정
-
-// 글씨 스타일 설정
+                editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
                 editText.setTypeface(null, Typeface.BOLD)
 
-                val layoutParams = LinearLayout.LayoutParams(500, LinearLayout.LayoutParams.WRAP_CONTENT)
-                editText.layoutParams = layoutParams
+                val button = Button(itemView.context)
+                button.text = "할일 추가"
+//                val backgroundColor = ContextCompat.getColor(itemView.context, R.color.mainColor)
+//                button.setBackgroundColor(backgroundColor)
+                val layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
 
-                // 동적으로 추가된 EditText를 LinearLayout에 추가
-                container.addView(editText)
+                // Set margin to the views
+                layoutParams.setMargins(16, 0, 0, 0)
+
+                editText.layoutParams = layoutParams
+                button.layoutParams = layoutParams
+
+                // Add the views to the LinearLayout
+                linearLayout.addView(editText)
+                linearLayout.addView(button)
+
+                // Add the LinearLayout to the main container
+                container.addView(linearLayout)
+
+                button.setOnClickListener {
+                    val intent = Intent(itemView.context, CheckActivity::class.java)
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }
+
 }
