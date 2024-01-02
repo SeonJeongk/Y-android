@@ -1,0 +1,56 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/share_round_popup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/time_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#3DA9FC"
+        app:layout_constraintBottom_toTopOf="@+id/time_btn_no" />
+    <TextView
+        android:id="@+id/time_btn_yes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:paddingVertical="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/time_btn_no" />
+
+    <TextView
+        android:id="@+id/time_btn_no"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="16dp"
+        android:text="No"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/time_btn_yes"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TimePicker
+        android:id="@+id/timepicker_alert_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:selectionDividerHeight="0.1dp"
+        android:theme="@style/InfoNumberPickerTheme"
+        app:layout_constraintBottom_toTopOf="@+id/time_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

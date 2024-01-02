@@ -1,16 +1,24 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.HackathonY" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:timePickerStyle">@style/MyTimePickerTheme</item>
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
-    <style name="NoAnimationBottomNavigationView" parent="Widget.Design.BottomNavigationView">
-        <item name="android:animateLayoutChanges">false</item>
-        <item name="android:transitionGroup">false</item>
     </style>
 
     <style name="Theme.HackathonY" parent="Base.Theme.HackathonY" >
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="TextStyleSemiBold15" />
+    <style name="InfoNumberPickerTheme">
+        <item name="android:textSize">17sp</item>
+        <item name="android:fontFamily">@font/pretendard_extrabold</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+
+    <style name="MyTimePickerTheme" parent="android:Widget.Material.Light.TimePicker">
+        <item name="android:timePickerMode">spinner</item>
     </style>
 </resources>
