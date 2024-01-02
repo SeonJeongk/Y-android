@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="87dp"
+    android:background="@color/mainColor"
+    app:elevation="0dp"
+    app:layout_scrollFlags="scroll|enterAlways">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/appbar_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="49dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/ic_hambuger"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/appbar_meeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineHeight="20dp"
+            android:text="회의록"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:visibility="invisible"
+            android:fontFamily="@font/pretendard_regular"
+            app:layout_constraintBottom_toBottomOf="@id/appbar_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/appbar_layout" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.appbar.AppBarLayout>
