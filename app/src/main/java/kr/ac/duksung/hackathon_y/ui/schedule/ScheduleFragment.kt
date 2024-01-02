@@ -35,6 +35,9 @@ class ScheduleFragment : Fragment() {
 		binding = FragmentScheduleBinding.inflate(inflater, container, false)
 		sharedPreferences = requireContext().getSharedPreferences("time_pick", Context.MODE_PRIVATE)
 
+		binding.actionbar.tvTitle.visibility = View.VISIBLE
+		binding.actionbar.tvTitle.text = "스케줄"
+
 		initRecyclerView()
 		initCalendarView()
 
