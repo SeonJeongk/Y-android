@@ -22,7 +22,7 @@ class MeetingFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         viewBinding = FragmentMeetingBinding.inflate(inflater, container,false)
-        viewBinding.actionbar.appbarMeeting.visibility = View.VISIBLE
+        viewBinding.actionbar.tvTitle.visibility = View.VISIBLE
         viewBinding.btnWrite.setOnClickListener {
             val destinationFragment = WriteMeetingFragment()
 
