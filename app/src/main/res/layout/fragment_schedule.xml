@@ -26,11 +26,12 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
                 android:layout_weight="1"
+                app:mcv_weekDayTextAppearance="@style/TextStyleSemiBold15"
                 android:background="@drawable/item_border_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/actionbar"
-                app:mcv_selectionColor="#00F"
+                app:mcv_selectionColor="@color/mainColor"
                 app:mcv_showOtherDates="all" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -60,13 +61,27 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerReview"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_add_time"
+                tools:listitem="@layout/item_time" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
-                tools:listitem="@layout/item_time"
+                android:layout_marginBottom="10dp"
+                android:text="1시간 단위로 선택해 주세요."
+                app:layout_constraintBottom_toTopOf="@+id/recyclerReview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_add_time" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_cant_time" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
