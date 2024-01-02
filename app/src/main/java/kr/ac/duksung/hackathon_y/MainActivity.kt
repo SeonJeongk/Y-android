@@ -1,5 +1,12 @@
 package kr.ac.duksung.hackathon_y
 
+<<<<<<< HEAD
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kr.ac.duksung.hackathon_y.ui.meeting.MeetingFragment
+=======
 import android.app.Activity
 import android.app.AlarmManager
 import android.content.pm.PackageInfo
@@ -18,6 +25,7 @@ import kr.ac.duksung.hackathon_y.ui.alarm.AlarmManagerUtil
 import kr.ac.duksung.hackathon_y.ui.alarm.AlarmReceiver
 import kr.ac.duksung.hackathon_y.ui.TeamManagement.TeamManagementFragment
 import java.security.MessageDigest
+>>>>>>> 4917d9f466e310b5eb8c1cd249eeb5b1e0f599b2
 
 class MainActivity : AppCompatActivity() {
 
