@@ -46,14 +46,13 @@ class AlarmReceiver : BroadcastReceiver() {
                 notificationManager.createNotificationChannel(channel)
             }
         }
-    }
 
-    @SuppressLint("MissingPermission")
-    private fun showCustomNotification(context: Context) {
+        @SuppressLint("MissingPermission")
+        private fun showCustomNotification(context: Context) {
 
-        Log.d("Alarm setup", "showCustomNotification 호출됨")
-        val notificationLayout = RemoteViews(context.packageName, R.layout.notification_layout)
-        val customFont = ResourcesCompat.getFont(context, R.font.ssflowerroadregular)
+            Log.d("Alarm setup", "showCustomNotification 호출됨")
+            val notificationLayout = RemoteViews(context.packageName, R.layout.notification_layout)
+            val customFont = ResourcesCompat.getFont(context, R.font.ssflowerroadregular)
 
 //        // 폰트를 적용할 TextView
 //        val tv1  = R.id.tv_2
@@ -67,22 +66,29 @@ class AlarmReceiver : BroadcastReceiver() {
 //        notificationLayout.setInt(tv3 , "setTypeface", customFont?.toFontResponse()!!)
 //        notificationLayout.setInt(tv4 , "setTypeface", customFont?.toFontResponse()!!)
 
-        val notification = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setStyle(NotificationCompat.DecoratedCustomViewStyle())
-            .setSmallIcon(R.drawable.ic_alram)
-            .setCustomContentView(notificationLayout)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .build()
+            val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+                .setStyle(NotificationCompat.DecoratedCustomViewStyle())
+                .setSmallIcon(R.drawable.ic_alram)
+                .setCustomContentView(notificationLayout)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .build()
 
-        val notificationManager = NotificationManagerCompat.from(context)
-        notificationManager.notify(NOTIFICATION_ID, notification)
-    }
+            val notificationManager = NotificationManagerCompat.from(context)
+            notificationManager.notify(NOTIFICATION_ID, notification)
+        }
 
-    // ResourcesCompat.getFont에서 반환된 폰트를 적용할 수 있도록 확장 함수 생성
-    private fun Typeface?.toFontResponse(): Int {
-        return when (this) {
-            null -> 0 // 폰트를 불러올 수 없는 경우 0을 반환
-            else -> 1 // 원하는 폰트 로딩 성공
+        internal fun setImmediateAlarm(context: Context) {
+            // 알림을 즉시 생성
+            setupNotificationChannel(context)
+            showCustomNotification(context)
+        }
+
+        // ResourcesCompat.getFont에서 반환된 폰트를 적용할 수 있도록 확장 함수 생성
+        private fun Typeface?.toFontResponse(): Int {
+            return when (this) {
+                null -> 0 // 폰트를 불러올 수 없는 경우 0을 반환
+                else -> 1 // 원하는 폰트 로딩 성공
+            }
         }
     }
 }
@@ -102,7 +108,7 @@ class AlarmManagerUtil {
 //                set(Calendar.MINUTE, 32)    // 분
 //                set(Calendar.SECOND, 0)
 //                Log.d("Alarm setup", timeInMillis.toString())
-                timeInMillis = System.currentTimeMillis() + 10000 // 알림 뜨는 시간 10초 뒤로 설정
+                timeInMillis = System.currentTimeMillis() + 30000 // 알림 뜨는 시간 30초 뒤로 설정
                 Log.d("Alarm setup", timeInMillis.toString())
             }
 
@@ -117,6 +123,9 @@ class AlarmManagerUtil {
             )
 
             Log.d("Alarm setup", "PendingIntent 생성됨: $alarmIntent")
+
+            // 알림을 즉시 생성
+            AlarmReceiver.setImmediateAlarm(context)
         }
     }
 }
