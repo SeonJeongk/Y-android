@@ -24,13 +24,12 @@ class MeetingFragment : Fragment() {
         viewBinding = FragmentMeetingBinding.inflate(inflater, container,false)
         viewBinding.actionbar.tvTitle.visibility = View.VISIBLE
         viewBinding.btnWrite.setOnClickListener {
-            val destinationFragment = WriteMeetingFragment()
-
+            val writeFragment = WriteMeetingFragment()
             // 프래그먼트 트랜잭션 시작
             val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
 
             // 프래그먼트를 백 스택에 추가하고 트랜잭션 커밋
-            transaction.replace(R.id.fragment_container, destinationFragment)
+            transaction.replace(R.id.fragment_container, writeFragment)
             transaction.addToBackStack(null)
             transaction.commit()
         }
