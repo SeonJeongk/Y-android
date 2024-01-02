@@ -1,5 +1,6 @@
 package kr.ac.duksung.hackathon_y.ui.meeting
 
+//import InnerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,6 +56,8 @@ class MeetingAdapter(private val meetingList: List<Meeting>) : RecyclerView.Adap
                 meetingDetailRecyclerView.layoutManager = LinearLayoutManager(itemView.context)
                 meetingDetailRecyclerView.adapter = innerAdapter
             }
+
+
         }
 
     }

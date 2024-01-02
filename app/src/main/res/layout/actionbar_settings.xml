@@ -29,16 +29,16 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="46dp"
+            android:layout_marginTop="43dp"
             android:fontFamily="@font/pretendard_regular"
             android:lineHeight="20dp"
             android:text="회의록"
+
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@id/iv_sidemenu"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_sidemenu" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.appbar.AppBarLayout>
