@@ -1,5 +1,4 @@
-package kr.ac.duksung.hackathon_y.ui.schedule
-
+import kr.ac.duksung.hackathon_y.ui.schedule.Time
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.SharedPreferences
@@ -20,15 +19,17 @@ class ScheduleFragment : Fragment() {
 	private lateinit var binding: FragmentScheduleBinding
 	private lateinit var timeRVAdapter: TimeRVAdapter
 	private lateinit var sharedPreferences: SharedPreferences
+	private var selectedDate: Calendar? = null  // 추가: 선택한 날짜를 저장하는 변수
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
-		savedInstanceState: Bundle?,
+		savedInstanceState: Bundle?
 	): View? {
 		binding = FragmentScheduleBinding.inflate(inflater, container, false)
-		sharedPreferences = requireContext().getSharedPreferences("time_pick", Context.MODE_PRIVATE) // 추가: SharedPreferences 초기화
+		sharedPreferences = requireContext().getSharedPreferences("time_pick", Context.MODE_PRIVATE)
 
 		initRecyclerView()
+		initCalendarView()
 
 		binding.btnAddTime.setOnClickListener { showTimePicker() }
 
@@ -36,10 +37,9 @@ class ScheduleFragment : Fragment() {
 	}
 
 	private fun initRecyclerView() {
-		timeRVAdapter = TimeRVAdapter(requireContext(), sharedPreferences) // 수정: SharedPreferences 전달
+		timeRVAdapter = TimeRVAdapter(requireContext(), sharedPreferences)
 		binding.recyclerReview.adapter = timeRVAdapter
-		binding.recyclerReview.layoutManager =
-			LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+		binding.recyclerReview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 	}
 
 	private fun showTimePicker() {
@@ -50,8 +50,8 @@ class ScheduleFragment : Fragment() {
 		val timePickerDialog = TimePickerDialog(
 			requireContext(),
 			{ _, selectedHour, selectedMinute ->
-				val selectedTime = Time(selectedHour, selectedMinute)
-				timeRVAdapter.addTime(selectedTime, formatTime(selectedTime))
+				val selectedTime = Time(selectedHour.toString(), selectedMinute.toString())
+				saveTime(selectedTime)
 			},
 			hour,
 			minute,
@@ -60,25 +60,59 @@ class ScheduleFragment : Fragment() {
 		timePickerDialog.show()
 	}
 
+	private fun saveTime(selectedTime: Time) {
+		selectedDate?.let { date ->
+			val formattedTime = formatTime(selectedTime)
+			timeRVAdapter.addTime(selectedTime, formattedTime)
+
+			val key = getKey(date)
+			sharedPreferences.edit().putString(key, formattedTime).apply()
+		}
+	}
+
 	private fun initCalendarView() {
 		binding.calendarView.setOnDateChangedListener(OnDateSelectedListener { widget, date, selected ->
-			// 사용자가 캘린더에서 날짜를 선택했을 때 호출됩니다.
-			// 여기서 선택한 날짜에 시간을 저장하거나 특별한 동작을 수행할 수 있습니다.
 
-			// 예시: 선택한 날짜를 TextView에 표시
-			val selectedDate = Calendar.getInstance()
-			selectedDate.set(date.year, date.month, date.day)
+			selectedDate = Calendar.getInstance().apply {
+				set(date.year, date.month, date.day)
+			}
+			timeRVAdapter.clearTimeList()
 
-			showTimePicker()
+			loadTimeData(selectedDate!!)
 		})
+	}
+
+	private fun loadTimeData(selectedDate: Calendar) {
+		val key = getKey(selectedDate)
+		val formattedTime = sharedPreferences.getString(key, null)
+
+		formattedTime?.let {
+			val selectedTime = parseFormattedTime(it)
+			timeRVAdapter.addTime(selectedTime, formattedTime)
+		}
 	}
 
 	private fun formatTime(time: Time): String {
 		val calendar = Calendar.getInstance()
-		calendar.set(Calendar.HOUR_OF_DAY, time.hour)
-		calendar.set(Calendar.MINUTE, time.min)
+		calendar.set(Calendar.HOUR_OF_DAY, time.hour.toInt())
+		calendar.set(Calendar.MINUTE, time.min.toInt())
 
 		val simpleDateFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
 		return simpleDateFormat.format(calendar.time)
+	}
+
+	private fun parseFormattedTime(formattedTime: String): Time {
+		val calendar = Calendar.getInstance()
+		val simpleDateFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
+		calendar.time = simpleDateFormat.parse(formattedTime)!!
+
+		return Time(
+			hour = calendar.get(Calendar.HOUR_OF_DAY).toString(),
+			min = calendar.get(Calendar.MINUTE).toString()
+		)
+	}
+
+	private fun getKey(calendar: Calendar): String {
+		return SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
 	}
 }
