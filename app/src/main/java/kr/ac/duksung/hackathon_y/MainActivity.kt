@@ -16,11 +16,14 @@ import kr.ac.duksung.hackathon_y.ui.MeetingFragment
 import kr.ac.duksung.hackathon_y.ui.alarm.AlarmFragment
 import kr.ac.duksung.hackathon_y.ui.alarm.AlarmManagerUtil
 import kr.ac.duksung.hackathon_y.ui.alarm.AlarmReceiver
+import kr.ac.duksung.hackathon_y.ui.TeamManagement.TeamManagementFragment
+import java.security.MessageDigest
 
 class MainActivity : AppCompatActivity() {
 
     private val meetingFragment = MeetingFragment()
     private val alarmFragment = AlarmFragment()
+    private val teamManagementFragment=TeamManagementFragment()
     private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(meetingFragment)
                 }
                 R.id.tapTeam -> {
+                    replaceFragment(teamManagementFragment)
                 }
                 R.id.tapAlram -> {
                     replaceFragment(alarmFragment)
