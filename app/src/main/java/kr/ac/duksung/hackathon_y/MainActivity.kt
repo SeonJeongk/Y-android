@@ -1,17 +1,19 @@
 package kr.ac.duksung.hackathon_y
 
+import android.app.Activity
+import android.app.AlarmManager
+import ScheduleFragment
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kr.ac.duksung.hackathon_y.ui.meeting.MeetingFragment
-
-import android.app.Activity
-import android.app.AlarmManager
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-
-import androidx.core.app.ActivityCompat
 import kr.ac.duksung.hackathon_y.ui.alarm.AlarmFragment
 import kr.ac.duksung.hackathon_y.ui.alarm.AlarmManagerUtil
 import kr.ac.duksung.hackathon_y.ui.alarm.AlarmReceiver
@@ -53,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(alarmFragment)
                 }
                 R.id.tapSchedule -> {
+	                replaceFragment(ScheduleFragment())
                 }
 
             }
