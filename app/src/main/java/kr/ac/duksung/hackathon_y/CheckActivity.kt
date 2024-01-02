@@ -10,17 +10,25 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import kr.ac.duksung.hackathon_y.R  // 여기에 프로젝트의 R 클래스 패키지를 정확히 지정해야 합니다.
+import kr.ac.duksung.hackathon_y.databinding.ActivityCheckBinding
+import kr.ac.duksung.hackathon_y.databinding.FragmentMeetingBinding
 
 
 class CheckActivity : AppCompatActivity() {
 
     private lateinit var container: LinearLayout
+    private lateinit var viewBinding:ActivityCheckBinding
     private lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check)
 
+        viewBinding = ActivityCheckBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
+
+        viewBinding.actionbar.ivSidemenu.visibility = View.INVISIBLE
+        viewBinding.actionbar.ivSidemenu2.visibility = View.VISIBLE
         container = findViewById(R.id.container)
         button = findViewById(R.id.btn)
 
