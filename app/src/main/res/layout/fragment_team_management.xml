@@ -9,26 +9,29 @@
     android:backgroundTint="@color/white"
     tools:context=".ui.TeamManagement.TeamManagementFragment">
 
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/actionbar_settings"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginTop="10dp"
         android:id="@+id/search"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/team_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/actionbar">
 
         <EditText
             android:id="@+id/search_field"
-            android:background="@android:color/transparent"
-            app:layout_constraintLeft_toRightOf="@id/search_btn"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:background="@android:color/transparent"
             android:hint="  Search  "
-
             app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/search_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,7 +63,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_margin="3dp"
         android:id="@+id/progress_rec"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

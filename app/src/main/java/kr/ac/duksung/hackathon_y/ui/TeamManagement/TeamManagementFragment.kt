@@ -27,6 +27,9 @@ class TeamManagementFragment : Fragment() {
         _binding = FragmentTeamManagementBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(TeamManagementViewModel::class.java) // ViewModel 초기화
 
+	    binding.actionbar.tvTitle.visibility = View.VISIBLE
+	    binding.actionbar.tvTitle.text = "팀원 관리"
+
         // Fragment에서 클릭 이벤트 처리
         progressAdapter = TeamManagementRecAdapter(listOf(), object: OnItemClickListener {
             override fun onItemClick(position: Int, progressDto: ProgressDto) {
