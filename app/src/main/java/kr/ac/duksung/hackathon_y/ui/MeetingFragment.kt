@@ -34,7 +34,7 @@ class MeetingFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         viewBinding = FragmentMeetingBinding.inflate(inflater, container,false)
-        viewBinding.actionbar.appbarMeeting.visibility = View.VISIBLE
+        viewBinding.actionbar.tvTitle.visibility = View.VISIBLE
 
         return inflater.inflate(R.layout.fragment_meeting, container, false)
     }
