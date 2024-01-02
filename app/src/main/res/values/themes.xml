@@ -9,7 +9,10 @@
         <item name="android:transitionGroup">false</item>
     </style>
 
-    <style name="Theme.HackathonY" parent="Base.Theme.HackathonY" />
+    <style name="Theme.HackathonY" parent="Base.Theme.HackathonY" >
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 
     <style name="TextStyleSemiBold15" />
 </resources>

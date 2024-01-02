@@ -9,12 +9,14 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kr.ac.duksung.hackathon_y.ui.MeetingFragment
+import kr.ac.duksung.hackathon_y.ui.alarm.AlarmFragment
 import kr.ac.duksung.hackathon_y.ui.schedule.ScheduleFragment
 import java.security.MessageDigest
 
 class MainActivity : AppCompatActivity() {
 
     private val meetingFragment = MeetingFragment()
+    private val alarmFragment = AlarmFragment()
     private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.tapTeam -> {
                 }
                 R.id.tapAlram -> {
+                    replaceFragment(alarmFragment)
                 }
                 R.id.tapSchedule -> {
 	                replaceFragment(ScheduleFragment())
