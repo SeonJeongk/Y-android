@@ -1,15 +1,10 @@
 package kr.ac.duksung.hackathon_y
 
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Base64
-import android.util.Log
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kr.ac.duksung.hackathon_y.ui.MeetingFragment
-import java.security.MessageDigest
+import kr.ac.duksung.hackathon_y.ui.meeting.MeetingFragment
 
 class MainActivity : AppCompatActivity() {
 
