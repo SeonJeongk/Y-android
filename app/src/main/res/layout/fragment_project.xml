@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:backgroundTint="@color/white"
-    tools:context=".ui.TeamManagement.TeamManagementFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.Project.ProjectFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginTop="10dp"
@@ -45,7 +44,6 @@
             app:layout_constraintTop_toTopOf="@+id/search" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:layout_margin="10dp"
         android:id="@+id/team_rec"
@@ -66,17 +64,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/team_rec" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:visibility="invisible"
-        android:layout_margin="3dp"
-        android:id="@+id/teammember_rec"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_rec" />
-
-
     <Button
         android:id="@+id/prject_btn"
         android:text="프로젝트 추가하기"
@@ -88,4 +75,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
