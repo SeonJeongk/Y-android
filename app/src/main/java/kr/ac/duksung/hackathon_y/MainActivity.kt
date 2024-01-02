@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private val meetingFragment = MeetingFragment()
     private val alarmFragment = AlarmFragment()
     private val teamManagementFragment=TeamManagementFragment()
+	private val scheduleFragment = ScheduleFragment()
     private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(alarmFragment)
                 }
                 R.id.tapSchedule -> {
-	                replaceFragment(ScheduleFragment())
+	                replaceFragment(scheduleFragment)
                 }
 
             }
