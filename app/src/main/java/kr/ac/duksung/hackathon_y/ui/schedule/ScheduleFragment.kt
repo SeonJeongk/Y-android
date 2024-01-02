@@ -19,13 +19,17 @@ class ScheduleFragment : Fragment() {
 	private lateinit var binding: FragmentScheduleBinding
 	private lateinit var timeRVAdapter: TimeRVAdapter
 	private lateinit var sharedPreferences: SharedPreferences
-	private var selectedDate: Calendar? = null  // 추가: 선택한 날짜를 저장하는 변수
+	private var selectedDate: Calendar? = null
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View? {
 		binding = FragmentScheduleBinding.inflate(inflater, container, false)
+
+		binding.actionbar.tvTitle.visibility = View.VISIBLE
+		binding.actionbar.tvTitle.text = "스케줄 관리"
+
 		sharedPreferences = requireContext().getSharedPreferences("time_pick", Context.MODE_PRIVATE)
 
 		initRecyclerView()

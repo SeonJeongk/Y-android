@@ -14,15 +14,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <fragment
-                android:id="@+id/fragment"
-                android:name="kr.ac.duksung.hackathon_y.ui.MeetingFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout="@layout/fragment_meeting" />
+            <include
+                android:id="@+id/actionbar"
+                layout="@layout/actionbar_settings"/>
 
             <com.prolificinteractive.materialcalendarview.MaterialCalendarView
                 android:id="@+id/calendarView"
@@ -35,7 +29,7 @@
                 android:background="@drawable/item_border_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment"
+                app:layout_constraintTop_toBottomOf="@+id/actionbar"
                 app:mcv_selectionColor="#00F"
                 app:mcv_showOtherDates="all" />
 
