@@ -35,20 +35,10 @@
             android:text="회의록"
             android:textColor="@color/white"
             android:textSize="16sp"
-<<<<<<< HEAD
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-=======
             android:visibility="invisible"
-            android:fontFamily="@font/pretendard_regular"
             app:layout_constraintBottom_toBottomOf="@id/iv_sidemenu"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/iv_sidemenu" />
->>>>>>> 4917d9f466e310b5eb8c1cd249eeb5b1e0f599b2
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.appbar.AppBarLayout>
