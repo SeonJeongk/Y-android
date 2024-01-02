@@ -14,13 +14,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kr.ac.duksung.hackathon_y.ui.meeting.MeetingFragment
-
-import android.app.Activity
-import android.app.AlarmManager
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-
-import androidx.core.app.ActivityCompat
 import kr.ac.duksung.hackathon_y.ui.alarm.AlarmFragment
 import kr.ac.duksung.hackathon_y.ui.alarm.AlarmManagerUtil
 import kr.ac.duksung.hackathon_y.ui.alarm.AlarmReceiver
