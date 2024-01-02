@@ -4,8 +4,10 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HackathonY"
         tools:targetApi="31">
+        <activity android:name=".CheckActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="false"
@@ -28,15 +31,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- 알림 생성을 위한 Receiver 등록 -->
+
+        <activity android:name=".ui.login.LoginActivity"/>
 
         <!--   알림 생성을 위한 Receiver 등록    -->
         <receiver
             android:name=".ui.alarm.AlarmReceiver"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
     </application>

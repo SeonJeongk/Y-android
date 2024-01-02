@@ -51,8 +51,8 @@ class MeetingFragment : Fragment() {
         val innerItem2 = InnerItem("Agenda 2")
         val innerItem3 = InnerItem("Agenda 3")
 
-        val meeting1 = Meeting("Meeting 1", "2024-01-01", "10:00 AM", innerList = listOf(innerItem1, innerItem2))
-        val meeting2 = Meeting("Meeting 2", "2024-01-02", "02:30 PM", innerList = listOf(innerItem3))
+        val meeting1 = Meeting("1주차 회의 : 팀 빌딩", "12/23", "21:00 -", innerList = listOf(innerItem1, innerItem2))
+        val meeting2 = Meeting("2주차 회의 : 서비스 구상", "1/1", "12:30 -", innerList = listOf(innerItem3))
 
         // 미팅 리스트에 추가
         meetingList.add(meeting1)
@@ -80,10 +80,5 @@ class MeetingFragment : Fragment() {
 
         dialog.show()
     }
-
-
-
-
-
 
 }

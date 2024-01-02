@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kr.ac.duksung.hackathon_y.R
 import kr.ac.duksung.hackathon_y.databinding.FragmentTeamManagementBinding
+import kr.ac.duksung.hackathon_y.ui.Project.AddProjectFragment
 import kr.ac.duksung.hackathon_y.ui.TeamManagement.dto.ProgressDto
 import kr.ac.duksung.hackathon_y.ui.TeamManagement.dto.TeamMemberDto
 
@@ -55,6 +56,14 @@ class TeamManagementFragment : Fragment() {
             }
         })
 
+        binding.prjectBtn.setOnClickListener {
+            val addProjectFragment = AddProjectFragment()
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, addProjectFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
         binding.progressRec.adapter = progressAdapter
         binding.progressRec.layoutManager = LinearLayoutManager(context)
 
