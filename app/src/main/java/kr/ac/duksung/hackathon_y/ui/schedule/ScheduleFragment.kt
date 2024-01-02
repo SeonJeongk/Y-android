@@ -72,12 +72,14 @@ class ScheduleFragment : Fragment() {
 
 	private fun initCalendarView() {
 		binding.calendarView.setOnDateChangedListener(OnDateSelectedListener { widget, date, selected ->
+			// 선택한 날짜 변경 시 기존에 선택한 날짜의 데이터를 초기화
+			timeRVAdapter.clearTimeList()
 
 			selectedDate = Calendar.getInstance().apply {
 				set(date.year, date.month, date.day)
 			}
-			timeRVAdapter.clearTimeList()
 
+			// 선택한 날짜에 대한 시간 데이터를 불러와서 RecyclerView 갱신
 			loadTimeData(selectedDate!!)
 		})
 	}
@@ -87,6 +89,7 @@ class ScheduleFragment : Fragment() {
 		val formattedTime = sharedPreferences.getString(key, null)
 
 		formattedTime?.let {
+			// 저장된 시간이 있다면 RecyclerView에 추가
 			val selectedTime = parseFormattedTime(it)
 			timeRVAdapter.addTime(selectedTime, formattedTime)
 		}

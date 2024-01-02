@@ -27,6 +27,7 @@ class TimeRVAdapter(private val context: Context, private val sharedPreferences:
 		holder.itemBinding.tvTimeContent.text = formattedTime[position]
 
 		holder.itemBinding.btnDelete.setOnClickListener {
+			// 선택한 시간 삭제
 			removeTime(position)
 		}
 	}
@@ -38,69 +39,44 @@ class TimeRVAdapter(private val context: Context, private val sharedPreferences:
 		notifyDataSetChanged()
 	}
 
+	private fun removeTime(position: Int) {
+		time.removeAt(position)
+		formattedTime.removeAt(position)
+		saveTimeData()
+		notifyDataSetChanged()
+	}
 	fun clearTimeList() {
 		time.clear()
 		formattedTime.clear()
 		notifyDataSetChanged()
 	}
-
-	fun removeTime(position: Int) {
-		time.removeAt(position)
-		formattedTime.removeAt(position)
-		notifyDataSetChanged()
-
-		saveTimeDataToSharedPreferences()
-	}
-
-	private fun saveTimeDataToSharedPreferences() {
-		val editor = sharedPreferences.edit()
-		editor.clear()
-
-		for (i in 0 until time.size) {
-			val key = getKeyForPosition(i)
-			val formattedTime = formattedTime[i]
-			editor.putString(key, formattedTime)
-		}
-
-		editor.apply()
-	}
-
-	private fun getKeyForPosition(position: Int): String {
-		return "time_$position"
-	}
-
 	private fun saveTimeData() {
 		val editor = sharedPreferences.edit()
-		editor.clear()
+		val timeSet = HashSet<String>()
 
-		for (i in 0 until time.size) {
-			val key = getKeyForPosition(i)
-			val formattedTime = formatTime(time[i])
-			editor.putString(key, formattedTime)
+		for (t in time) {
+			timeSet.add(t.hour.toString() + ":" + t.min.toString())
 		}
 
+		editor.putStringSet("timeSet", timeSet)
 		editor.apply()
 	}
 
 	private fun loadTimeData() {
-		val keys = sharedPreferences.all.keys
+		val timeSet = sharedPreferences.getStringSet("timeSet", HashSet<String>())
 
 		time.clear()
 		formattedTime.clear()
 
-		for (key in keys) {
-			if (key.startsWith("time_")) {
-				val formattedTime = sharedPreferences.getString(key, "")
-				if (formattedTime != null) {
-					if (formattedTime.isNotEmpty()) {
-						val timeArray = formattedTime.split(":")
-						if (timeArray.size == 2) {
-							val hour = timeArray[0]
-							val min = timeArray[1]
-							time.add(Time(hour, min))
-							this.formattedTime.add(formattedTime!!)
-						}
-					}
+		if (timeSet != null) {
+			for (timeString in timeSet) {
+				val timeArray = timeString.split(":")
+				if (timeArray.size == 2) {
+					val hour = timeArray[0]
+					val min = timeArray[1]
+					val formattedTime = formatTime(Time(hour, min))
+					time.add(Time(hour, min))
+					this.formattedTime.add(formattedTime)
 				}
 			}
 		}
