@@ -3,26 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/tapMeeting"
-        android:title="회의록"
         android:icon="@drawable/ic_check"
-        app:showAsAction="ifRoom"
-        />
+        android:title="회의록"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/tapTeam"
-        android:title="팀원 관리"
         android:icon="@drawable/ic_team"
-        app:showAsAction="ifRoom"/>
+        android:title="팀원 관리"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/tapAlram"
+        android:icon="@drawable/ic_alram"
         android:title="알림"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_alram"/>
+        app:showAsAction="ifRoom" />
 
     <item
-        android:icon="@drawable/ic_scheduler"
         android:id="@+id/tapSchedule"
-        app:showAsAction="ifRoom"
-        android:title="스케줄 조정"/>
+        android:icon="@drawable/ic_scheduler"
+        android:title="스케줄 조정"
+        app:showAsAction="ifRoom" />
 </menu>

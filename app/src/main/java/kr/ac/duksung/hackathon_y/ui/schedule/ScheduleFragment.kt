@@ -33,6 +33,9 @@ class ScheduleFragment : Fragment() {
 		savedInstanceState: Bundle?
 	): View? {
 		binding = FragmentScheduleBinding.inflate(inflater, container, false)
+		binding.actionbar.tvTitle.visibility = View.VISIBLE
+		binding.actionbar.tvTitle.text = "스케줄 관리"
+
 		sharedPreferences = requireContext().getSharedPreferences("time_pick", Context.MODE_PRIVATE)
 
 		binding.actionbar.tvTitle.visibility = View.VISIBLE
